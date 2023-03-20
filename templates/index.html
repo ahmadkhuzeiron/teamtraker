@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Aplikasi Pengelasan Untuk Prediksi</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="./static/assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Welder App">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="./static/assets/images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="./static/assets/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="./static/assets/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="./static/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="./static/assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="./static/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css ../assets/styles/app.min.css -->
+  <link rel="stylesheet" href="./static/assets/styles/app.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="./static/assets/styles/font.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="./static/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="./static/media/css/buttons.dataTables.min.css">
+</head>
+<body>
+<div class="loaddata">
+	<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> 
+</div>
+	<div class = "tambah">
+		<div class = "tutup">
+			X
+		</div>
+		<div class = "tambahproyek">
+			<form action="javascript:void(0);" class = "form" method = "POST">
+			  <label for="fname">Nama File Upload</label><br />
+			  <input type="text" id="fname" name="nama"><br /><br />
+			  
+			  <label for="lname">Nama Uploader</label><br />
+			  <input type="text" id="lname" name="waktu_pengerjaan"><br /><br />
+			  
+			  <label for="lname">Jenis Training Welder</label><br />
+			  <input type="text" id="lname" name="biaya_minimal"><br /><br />
+			  
+			  <label for="lname">Pilih File</label><br />
+			  <input type="file" id="lname" name="biaya_maksimal"><br /><br />
+			  
+			  <input type="submit" class = "simpan" value="SIMPAN FILE SEKARANG">
+			</form> 
+		</div>
+	</div>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <div id="aside" class="app-aside modal fade nav-dropdown">
+  	<!-- fluid app aside -->
+    <div class="left navside dark dk" layout="column">
+  	  <div class="navbar no-radius">
+        <!-- brand -->
+        <a class="navbar-brand menuhome" href="javascript:void(0);">
+        	<img src="./static/assets/images/logo.png" alt="." class="hide">
+        	<span class="hidden-folded inline">WELDER APP</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <div flex class="hide-scroll">
+          <nav class="scroll nav-light">
+            
+              <ul class="nav" ui-nav>
+                <li class="nav-header hidden-folded">
+                  <small class="text-muted">Main Menu</small>
+                </li>
+                
+                <li>
+                  <a href="javascript:void(0);" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;</i>
+                    </span>
+                    <span class="nav-text menuhome">Home</span>
+                  </a>
+                </li>
+            
+                <li>
+                  <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <span class="nav-label">
+                      <b class="label rounded label-sm primary">4</b>
+                    </span>
+                    <span class="nav-icon">
+                      <i class="fa fa-area-chart"></i>
+                    </span>
+                    <span class="nav-text">Grafik</span>
+                  </a>
+                  <ul class="nav-sub">
+                    <li>
+                      <a href="javascript:void(0);" class="menugrafik" data-url="getAcce" data-id="Accelerometer" data-id1="Gyroscope" data-id2="Magnetometer" data-satuan=" (g)" data-satuan1=" (deg/s)" data-satuan2=" (T)">
+                        <span class="nav-text">Accelerometer</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);" class="menugrafik" data-url="getGyro" data-id="Gyroscope" data-id1="Gyroscope" data-id2="Magnetometer" data-satuan=" (deg/s)" data-satuan1=" (g)" data-satuan2=" (T)">
+                        <span class="nav-text">Gyroscope</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);" class="menugrafik" data-url="getMagne" data-id="Magnetometer" data-id1="Gyroscope" data-id2="Magnetometer" data-satuan=" (T)" data-satuan1=" (deg/s)" data-satuan2=" (g)">
+                        <span class="nav-text">Magnetometer</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);" class="menugrafikgabungan" data-url="getMagne" data-id="Accelerometer" data-id1="Gyroscope" data-id2="Magnetometer" data-satuan=" (g)" data-satuan1=" (deg/s)" data-satuan2=" (T)">
+                        <span class="nav-text">Gabungan</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+            
+                <li>
+                  <a href="javascript:void(0);" class="prediksi" data-url="getPrediksi" data-id="t1">
+                    <span class="nav-icon">
+                      <i class="fa fa-filter"></i>
+                    </span>
+                    <span class="nav-text">Prediksi</span>
+                  </a>
+                </li>
+            
+                <li>
+                  <a href="javascript:void(0);" class="users">
+                    <span class="nav-icon">
+                      <i class="fa fa-users"></i>
+                    </span>
+                    <span class="nav-text">Users</span>
+                  </a>
+                </li>
+				
+				<li>
+                  <a href="./" >
+                    <span class="nav-icon">
+                      <i class="fa fa-sign-out">
+                      </i>
+                    </span>
+                    <span class="nav-text">Logout</span>
+                  </a>
+                </li>
+                     
+              </ul>
+          </nav>
+      </div>
+    </div>
+  </div>
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z0" role="main">
+    <div class="app-footer" style="background: #fff;">
+      <div class="p-a text-xs">
+        <div class="pull-right text-muted">
+          &copy; Copyright <strong>Welder App</strong>
+          <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
+        </div>
+        <div class="nav">
+          <a class="nav-link" href="./">Aplikasi Pengelasan</a>
+        </div>
+      </div>
+    </div>
+    <div ui-view class="app-body" id="view">
+
+<!-- ############ PAGE START-->
+<div class="p-a white lt box-shadow">
+	<div class="row">
+		<div class="col-sm-8">
+			<h4 class="m-b-0 _300">Welcome to Welder App</h4>
+			<small class="text-muted">Aplikasi <strong>Pengelasan</strong> Untuk Mempresiksi Tahapan-tahapan dalam pengelasan (Preparation, Grinding, Welding dan Slag Cleaning)</small>
+		</div>
+		<div class="col-sm-4 text-sm-right">
+			<ul>
+              <li class="nav-item dropdown">
+                <a class="nav-link clear" href data-toggle="dropdown">
+                  <span class="avatar w-32">
+                    <img src="./static/assets/images/fotopp.png" alt="...">
+                    <i class="on b-white bottom"></i>
+                  </span>
+                </a>
+				<div class="dropdown-menu pull-right dropdown-menu-scale">
+				  <a class="dropdown-item" href="./">Sign out</a>
+				</div>
+              </li>
+              <li class="nav-item hidden-md-up">
+                <a class="nav-link" data-toggle="collapse" data-target="#collapse">
+                  <i class="material-icons">&#xe5d4;</i>
+                </a>
+              </li>
+            </ul>
+		</div>
+	</div>
+</div>
+<div class="padding">
+<div class="tahapproses none">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+	    	<div class="box">
+	    		<div class="isiproses">
+					<div class="box-header">
+						<h3 class="judultabel">Upload Data yang akan diproses Untuk Prediksi</h3>
+						<small class="desktabel">Upload data CSV Accelerometer, Gyroscope dan Magnetometer pada form dibawah ini</small>
+					</div>
+					<form class="form">
+						<div class="file-upload-wrapper" data-text="Select your file!">
+						  <input name="file-upload-field" type="file" class="file-upload-field fileup"  accept=".csv" />
+						  <div class="uploadskrg">
+							<i class="fa fa-cloud-upload"></i><br />
+							Pilih File Disini
+							</div>
+						</div>
+					</form>
+					<table id = "proseslstm"></table>
+	    		</div>
+				<div class = "loadingtabel" style="display: flex;z-index:999999999;height: 350px;text-align: center;justify-content: center;align-items: center;font-size: 16px;flex-direction: column;">
+					<img src = "./static/assets/images/loading.svg" />
+					Loading data from CSV File
+				</div>
+		    </div>
+	    </div>
+	</div>
+</div>
+<div class="nontahap">
+	<div class="row hapusitem">
+		<div class="col-xs-12 col-sm-4">
+	        <div class="box p-a">
+	          <div class="pull-left m-r">
+	            <span class="w-48 rounded  accent">
+	              <i class="fa fa-users"></i>
+	            </span>
+	          </div>
+	          <div class="clear">
+	            <h4 class="m-a-0 text-lg _300"><a href="javascript:void(0);" class="users"><span class="totaluser">1</span> <span class="text-sm"> Users</span></a></h4>
+	            <small class="text-muted">Actived Users</small>
+	          </div>
+	        </div>
+	    </div>
+	    <div class="col-xs-6 col-sm-4">
+	        <div class="box p-a">
+	          <div class="pull-left m-r">
+	            <span class="w-48 rounded primary">
+	              <i class="material-icons">&#xe54f;</i>
+	            </span>
+	          </div>
+	          <div class="clear">
+	            <h4 class="m-a-0 text-lg _300"><a href="javascript:void(0);" class="menugrafikgabungan" data-url="getMagne" data-id="Accelerometer" data-id1="Gyroscope" data-id2="Magnetometer" data-satuan=" (g)" data-satuan1=" (deg/s)" data-satuan2=" (T)"><span class="totaldata">1</span> <span class="text-sm"> Data</span></a></h4>
+	            <small class="text-muted">Dataset Welder</small>
+	          </div>
+	        </div>
+	    </div>
+	    <div class="col-xs-6 col-sm-4">
+	        <div class="box p-a">
+	          <div class="pull-left m-r">
+	            <span class="w-48 rounded warn">
+	              <i class="fa fa-bar-chart"></i>
+	            </span>
+	          </div>
+	          <div class="clear">
+	            <h4 class="m-a-0 text-lg _300"><a href="javascript:void(0);" class="prediksi">4 <span class="text-sm"> Processing</span></a></h4>
+	            <small class="text-muted">Predictions Result Welder</small>
+	          </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="col-sm-12 col-md-6">
+	    	<div class="box">
+	    		<div class="box-header">
+	    			<h3>Training Welder Projects </h3>
+	    			<small>Uji coba prediksi Tahapan-tahapan dalam pengelasan (Preparation, Grinding, Welding dan Slag Cleaning)</small>
+	    		</div>
+	    		<div class="isi">
+					<table id = "acce"></table>
+	    		</div>
+				<div class = "loadingtabel" style="display: flex;z-index:999999999;height: 350px;text-align: center;justify-content: center;align-items: center;font-size: 16px;flex-direction: column;">
+					<img src = "./static/assets/images/loading.svg" />
+					Loading data from CSV File
+				</div>
+		    </div>
+	    </div>
+	    <div class="col-sm-12 col-md-6">
+	    	<div class="box">
+		      <div class="box-header">
+			  <a class="btn info pull-right text-white" style="cursor:pointer;" data-toggle="modal" data-target="#m-a-a" ui-toggle-class="fade-up-big" ui-target="#animate"><i class="fa fa-bar-chart"></i> Lihat Grafik</a>
+		        <h3 class = "judulgrafik">Grafik Monitoring</h3>
+		        <small>Grafik Activity Welder Projects</small>
+		      </div>
+		      <div class="grafik">
+				<img height = "100%" style="cursor:pointer;" data-toggle="modal" data-target="#m-a-a" ui-toggle-class="fade-up-big" ui-target="#animate" width = "100%" src = "./static/grafik/getGrafik.png" />
+		      </div>
+		    </div>
+	    	<div class="box hapusitem">
+		      <div class="box-header">
+		        <h3>Daftar Pengguna Aplikasi</h3>
+		        <small>Berikut ini adalah Daftar Pengguna Aplikasi</small>
+		      </div>
+		      <table id="daftarusers"></table>
+		    </div>
+	    </div>
+	</div>
+	</div>
+</div>
+
+<!-- .modal -->
+<div id="m-a-a" class="modal fade animate" data-backdrop="true">
+  <div class="modal-dialog" id="animate" style="max-width: 90%;">
+    <div class="modal-content">
+      <div class="modal-body text-center p-lg" style="padding:0px;">
+		<img style="width:90%;height:90vh;" src = "./static/grafik/getGrafik.png" />
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
+<!-- / .modal -->
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+<!-- ############ LAYOUT END-->
+
+  </div>
+<!-- build:js scripts/app.html.js -->
+<!-- jQuery -->
+  <script src="./static/libs/jquery/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="./static/libs/jquery/tether/dist/js/tether.min.js"></script>
+  <script src="./static/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="./static/libs/jquery/underscore/underscore-min.js"></script>
+  <script src="./static/libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="./static/libs/jquery/PACE/pace.min.js"></script>
+
+  <script src="./static/scripts/config.lazyload.js"></script>
+
+  <script src="./static/scripts/palette.js"></script>
+  <script src="./static/scripts/ui-load.js"></script>
+  <script src="./static/scripts/ui-jp.js"></script>
+  <script src="./static/scripts/ui-include.js"></script>
+  <script src="./static/scripts/ui-device.js"></script>
+  <script src="./static/scripts/ui-form.js"></script>
+  <script src="./static/scripts/ui-nav.js"></script>
+  <script src="./static/scripts/ui-screenfull.js"></script>
+  <script src="./static/scripts/ui-scroll-to.js"></script>
+  <script src="./static/scripts/ui-toggle-class.js"></script>
+  <script src="./static/scripts/jquery.easing.min.js"></script>
+  <script src="./static/scripts/sweetalert2@11.js"></script>
+
+  <script src="./static/scripts/app.js"></script>
+	<script type="text/javascript" language="javascript" src="./static/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="./static/media/js/dataTables.buttons.min.js"></script>
+	
+  <!-- ajax -->
+  <script src="./static/scripts/ajax.js"></script>
+  <script src="./static/scripts/beranda.js"></script>
+<!-- endbuild -->
+</body>
+</html>
