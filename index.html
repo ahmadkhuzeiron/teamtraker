@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Softnio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta name="description" content="" />
+        <link rel="shortcut icon" href="../static/images/favicon.png" />
+        <title>PREDIKSI PERAT BADAN using FLASK</title>
+        <link rel="stylesheet" href="../static/assets/css/styles.css?v=1.0" />
+    </head>
+    <body class="nk-body" style="background: url('../static/images/bg.png'); background-size: cover;">
+        <div class="nk-banner">
+            <div class="container">
+                <div class="row g-gs align-items-center justify-content-between">
+                    <div class="col-lg-5 order-lg-last">
+                        <div class="nk-banner-image"><img src="../static/images/timbangan.png" alt="" /></div>
+                    </div>
+                    <div class="col-lg-6" style="margin-left: -120px;">
+                        <div class="nk-banner-block">
+                            <div class="content">
+                                <h1 class="heading">
+                                    <span>PREDIKSI</span> <span class="heading-sm"> <span class="sup">BERAT</span> <span class="sub">BADAN</span> </span>
+                                </h1>
+                                <p>
+                                    Selamat datang di Aplikasi untuk memprediksi Berat Badan Ideal dengan memasukkan Tinggi Badan dan Jenis Kelamin. Proses prediksi ini berdasarkan Data Flask App API. Untuk memulai Prediksi? Yuk Klik Tombol
+                                    Prediksi Sekarang...
+                                </p>
+                                <ul class="nk-banner-btns">
+                                    <li>
+                                        <a href="#protect" class="btn prediksi" data-toggle="modal" data-target="#exampleModal"><span>Prediksi Sekarang</span> &nbsp; &nbsp; <img src = "../static/images/arrow.png" width = "24px" height = "24px" /></a>
+                                    </li>
+                                </ul>
+                                <div class="status" data-covid="world">
+                                    <div class="row g-gs">
+                                        <div class="col-sm-4 col-6">
+                                            <div class="status-item">
+                                                <h6 class="title">Tinggi Badan</h6>
+                                                <div class="h3 tBadan covid-stats-cases">~</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-6">
+                                            <div class="status-item">
+                                                <h6 class="title">Jenis Kelamin</h6>
+                                                <div class="h3 jKelamin covid-stats-death">~</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-6">
+                                            <div class="status-item">
+                                                <h6 class="title">Berat Badan<sup>*</sup></h6>
+                                                <div class="h3 prediksiBB covid-stats-recovered">~</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-note">* Hasil Prediksi berdasarkan Data <b>Flask App</b></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Isi Form berikut untuk melakukan Prediksi Berat Badan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="namaFormInput">Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nama" id="namaFormInput" placeholder="Ketik disini..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="umurFormInput">Umur (Thn)</label>
+                                <input type="number" class="form-control" name="umur" id="umurFormInput" placeholder="Ketik disini..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="umurFormInput">Tinggi Badan (Inch)</label>
+                                <input type="number" class="form-control" name="tinggiBadan" id="tinggiFormInput" placeholder="Ketik disini..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="umurFormInput">Jenis Kelamin</label>
+								<div class="wrapper">
+								 <input type="radio" name="jenisKelamin" id="option-1" value="1" checked>
+								 <input type="radio" name="jenisKelamin" id="option-2" value="0">
+								   <label for="option-1" class="option option-1">
+									 <div class="dot"></div>
+									  <span>Laki-Laki</span>
+									  </label>
+								   <label for="option-2" class="option option-2">
+									 <div class="dot"></div>
+									  <span>Perempuan</span>
+								   </label>
+								</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary hitung">Prediksi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script language="javascript" src="../static/assets/js/jquery.js"></script>
+        <script language="javascript">
+            $(".hitung").on("click", function () {
+				var nama = $('input[name=nama]').val();
+				var umur = $('input[name=umur]').val();
+				var jenisKelamin = $('input[name="jenisKelamin"]:checked').val();
+				var tinggiBadan = $('input[name=tinggiBadan]').val();
+				if(nama == '' || umur == '' || typeof jenisKelamin === "undefined" || tinggiBadan == ''){
+					alert('Maaf, Semua data harus diisi');
+					return false;
+				}
+				$(".hitung").html('Proses');
+				$.ajax({
+					type: "POST",
+					url: "/",
+					data: {Gender: jenisKelamin, height: tinggiBadan},
+					contentType: "application/x-www-form-urlencoded",
+					success: function(responseData, textStatus, jqXHR) {
+						var hasilPrediksi = parseFloat(responseData).toFixed(2);
+						$(".tBadan").html(tinggiBadan+' inch');
+						$(".jKelamin").html(jenisKelamin == '1'?'Laki-Laki':'Perempuan');
+						$(".prediksiBB").html(hasilPrediksi+' Lb');
+						$(".hitung").html('Prediksi');
+						$('#exampleModal').modal('hide');
+						if(hasilPrediksi <= 0){
+							$('.nk-banner-image img').attr('src','../static/images/aset4.png');
+						}else if(hasilPrediksi >= 1 && hasilPrediksi <= 300){
+							$('.nk-banner-image img').attr('src','../static/images/aset1.png');
+						}else if(hasilPrediksi >= 301 && hasilPrediksi <= 699){
+							$('.nk-banner-image img').attr('src','../static/images/aset2.png');
+						}else{
+							$('.nk-banner-image img').attr('src','../static/images/aset3.png');
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(errorThrown);
+					}
+				});
+			});
+        </script>
+    </body>
+</html>
