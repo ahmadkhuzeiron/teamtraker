@@ -1,0 +1,30 @@
+{
+  "name": "beginner",
+  "version": "1.0.0",
+  "description": "npm guide for beginner",
+  "main": "beginner-npm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadkhuzeiron/teamtraker.git"
+  },
+  "keywords": [
+    "npm",
+    "example",
+    "beginner"
+  ],
+  "author": "akhmad khuzeiron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahmadkhuzeiron/teamtraker/issues"
+  },
+  "homepage": "https://github.com/ahmadkhuzeiron/teamtraker#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
